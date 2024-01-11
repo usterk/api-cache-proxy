@@ -5,7 +5,9 @@ This program is a proxy designed to fetch data from CoinGecko and cache requests
 ## Installation
 To install and run this program, you will need Python 3 and the Flask library. You can install Flask with pip:
 ```
-pip3 install flask requests
+git clone https://github.com/usterk/api-cache-proxy.git
+cd api-cache-proxy
+pip3 install flask flask_cors requests
 ```
 ## Running the Program
 To run the program, use the following command:
@@ -16,7 +18,21 @@ The program uses the `HOST` and `PORT` environment variables to determine where 
 ```
 export HOST='your_host/ip'
 export PORT='your_port'
+python3 main.py
 ```
+## Running in background
+To run the program in background, use the following command:
+```
+screen -S api-cache-proxy-session
+python3 main.py | tee output.log
+```
+Then press `Ctrl+A`` followed by `D` to detach the session.
+
+To reattach the session, use the following command:
+```
+screen -d -r api-cache-proxy-session
+```
+
 ## Making Requests
 You can make requests to the CoinGecko API through this proxy using curl, browser or your js app. Here's an example:
 ```
